@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mini-deep-llm-v4"
+version = "0.1.0"
+description = "DeepSeek-V4 mini implementation (200M) optimized for single A100 80GB"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=4.1.1",
+    "transformers==4.56.1",
+    "torch>=2.0",
+    "tensorboard",
+    "numpy",
+    "matplotlib>=3.10.6",
+    "tqdm>=4.67.1",
+    "python-dotenv",
+    "fastapi",
+    "uvicorn[standard]",
+    "websockets",
+]
+
+[project.optional-dependencies]
+cpu = ["torch"]
+cu118 = ["torch"]
+cu121 = ["torch"]
+cu124 = ["torch"]
+cu126 = ["torch"]
+cu128 = ["torch"]
+cu130 = ["torch"]
+
+[tool.uv]
+index-url = "https://mirrors.aliyun.com/pypi/simple/"
+link-mode = "hardlink"
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", extra = "cpu" },
+    { index = "pytorch-cu118", extra = "cu118" },
+    { index = "pytorch-cu121", extra = "cu121" },
+    { index = "pytorch-cu124", extra = "cu124" },
+    { index = "pytorch-cu126", extra = "cu126" },
+    { index = "pytorch-cu128", extra = "cu128" },
+    { index = "pytorch-cu130", extra = "cu130" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["mini_models", "data_loader"]

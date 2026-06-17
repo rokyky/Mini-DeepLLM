@@ -1,0 +1,42 @@
+{
+  "_comment": "DeepSeek V4 200M 参数配置 —— 单卡 A100 80GB 优化版",
+
+  "hidden_size": 768,
+  "num_hidden_layers": 10,
+  "num_attention_heads": 12,
+  "max_position_embeddings": 2048,
+
+  "q_lora_rank": 192,
+  "head_dim": 64,
+  "rope_head_dim": 16,
+  "o_groups": 4,
+  "o_lora_rank": 96,
+  "window_size": 128,
+
+  "index_num_attention_heads": 8,
+  "index_head_dim": 16,
+  "index_topk": 16,
+  "index_score_bias_alpha": 0.1,
+  "csa_ratio": 4,
+  "hca_ratio": 128,
+
+  "moe_intermediate_size": 768,
+  "n_routed_experts": 8,
+  "n_activated_experts": 2,
+  "n_shared_experts": 1,
+  "score_func": "sqrtsoftplus",
+  "use_noaux_load_balance": true,
+  "bias_update_speed": 0.001,
+  "use_seq_aux": true,
+  "seq_aux_alpha": 0.0001,
+
+  "n_hash_layers": 3,
+  "hc_mult": 4,
+  "hc_sinkhorn_iters": 20,
+
+  "rope_theta": 10000.0,
+  "compress_rope_theta": 40000.0,
+
+  "use_mtp": true,
+  "mtp_loss_lambda": 0.0001
+}
